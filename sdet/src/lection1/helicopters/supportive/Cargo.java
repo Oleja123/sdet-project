@@ -1,4 +1,4 @@
-package helicopters.supportive;
+package lection1.helicopters.supportive;
 
 public class Cargo {
     private int weight;

@@ -1,10 +1,9 @@
-package helicopters;
+package lection1.helicopters;
 
-import abstracts.AbstractHelicopter;
-import helicopters.supportive.Cargo;
-import interfaces.ICargo;
+import lection1.abstracts.AbstractHelicopter;
+import lection1.helicopters.supportive.Cargo;
+import lection1.interfaces.ICargo;
 
-import java.util.Queue;
 import java.util.Stack;
 
 public class CargoHelicopter extends AbstractHelicopter implements ICargo {

@@ -1,7 +1,7 @@
-package helicopters;
+package lection1.helicopters;
 
-import abstracts.AbstractHelicopter;
-import interfaces.IAttacker;
+import lection1.abstracts.AbstractHelicopter;
+import lection1.interfaces.IAttacker;
 
 public class AttackHelicopter extends AbstractHelicopter implements IAttacker {
     protected int bulletsCount;

@@ -1,6 +1,6 @@
-package interfaces;
+package lection1.interfaces;
 
-import helicopters.supportive.Cargo;
+import lection1.helicopters.supportive.Cargo;
 
 public interface ICargo {
     public boolean toLoad(Cargo cargo);

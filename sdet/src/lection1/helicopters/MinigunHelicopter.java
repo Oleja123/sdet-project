@@ -1,4 +1,4 @@
-package helicopters;
+package lection1.helicopters;
 
 public class MinigunHelicopter extends AttackHelicopter{
     public MinigunHelicopter(String color, int bulletsCount){

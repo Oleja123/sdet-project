@@ -1,6 +1,6 @@
-package abstracts;
+package lection1.abstracts;
 
-import interfaces.IFlying;
+import lection1.interfaces.IFlying;
 
 import java.util.Random;
 

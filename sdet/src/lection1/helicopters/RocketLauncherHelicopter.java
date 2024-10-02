@@ -1,6 +1,6 @@
-package helicopters;
+package lection1.helicopters;
 
-import interfaces.IRocketLaunchable;
+import lection1.interfaces.IRocketLaunchable;
 
 public class RocketLauncherHelicopter extends AttackHelicopter implements IRocketLaunchable {
     private int rocketsCount;

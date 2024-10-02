@@ -1,12 +1,11 @@
-import abstracts.AbstractHelicopter;
-import helicopters.AttackHelicopter;
-import helicopters.CargoHelicopter;
-import helicopters.MinigunHelicopter;
-import helicopters.RocketLauncherHelicopter;
-import helicopters.supportive.Cargo;
+package lection1;
 
-import java.awt.*;
-import java.util.ArrayList;
+import lection1.abstracts.AbstractHelicopter;
+import lection1.helicopters.AttackHelicopter;
+import lection1.helicopters.CargoHelicopter;
+import lection1.helicopters.MinigunHelicopter;
+import lection1.helicopters.RocketLauncherHelicopter;
+import lection1.helicopters.supportive.Cargo;
 
 public class Main {
     public static void main(String[] args) {
