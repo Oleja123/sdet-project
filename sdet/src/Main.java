@@ -1,14 +1,15 @@
-package lection1;
-
 import lection1.abstracts.AbstractHelicopter;
 import lection1.helicopters.AttackHelicopter;
 import lection1.helicopters.CargoHelicopter;
 import lection1.helicopters.MinigunHelicopter;
 import lection1.helicopters.RocketLauncherHelicopter;
 import lection1.helicopters.supportive.Cargo;
+import lection2.DataChecker;
+
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    private static void checkLection1(){
         ///Attack helicopter test
         System.out.println();
         System.out.println("Attack helicopter test");
@@ -112,5 +113,16 @@ public class Main {
         System.out.println();
         System.out.println("Helicopters test");
         System.out.println(AbstractHelicopter.createdCoptersCount);
+    }
+    private static void checkLection2(){
+        String login, password, confirmPassword;
+        Scanner sc = new Scanner(System.in);
+        login = sc.nextLine();
+        password = sc.nextLine();
+        confirmPassword = sc.nextLine();
+        System.out.println(DataChecker.checkData(login, password, confirmPassword));
+    }
+    public static void main(String[] args) {
+        checkLection2();
     }
 }
