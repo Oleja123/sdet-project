@@ -1,5 +1,3 @@
-package lection1;
-
 import lection1.abstracts.AbstractHelicopter;
 import lection1.helicopters.AttackHelicopter;
 import lection1.helicopters.CargoHelicopter;
