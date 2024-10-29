@@ -1,9 +1,11 @@
 package lection1.helicopters;
 
 import lection1.abstracts.AbstractHelicopter;
+import lection1.helicopters.supportive.Pilot;
+import lection1.helicopters.supportive.TestPilot;
 import lection1.interfaces.IAttacker;
 
-public class AttackHelicopter extends AbstractHelicopter implements IAttacker {
+public class AttackHelicopter extends AbstractHelicopter<TestPilot> implements IAttacker {
     protected int bulletsCount;
     public AttackHelicopter(String color, int bulletsCount){
         AbstractHelicopter.createCopter();
