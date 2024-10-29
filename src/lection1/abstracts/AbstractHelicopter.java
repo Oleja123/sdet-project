@@ -4,7 +4,7 @@ import lection1.interfaces.IFlying;
 
 import java.util.Random;
 
-public class AbstractHelicopter implements IFlying {
+public abstract class AbstractHelicopter implements IFlying {
     public static int createdCoptersCount = 0;
     protected int bladesCount = 4;
 
