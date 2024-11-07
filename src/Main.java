@@ -4,111 +4,67 @@ import lection1.helicopters.CargoHelicopter;
 import lection1.helicopters.MinigunHelicopter;
 import lection1.helicopters.RocketLauncherHelicopter;
 import lection1.helicopters.supportive.Cargo;
+import lection4.collections.StudentsCollection;
+import lection4.entities.Student;
+
+import java.util.List;
 
 public class Main {
+
+    public static void printStudents(List<Student> students, int course) {
+        students.stream().filter(x -> x.getCourse() == course).forEach(x -> System.out.println(x.getName()));
+    }
+
+    public static void checkLection4(){
+        StudentsCollection studentsCollection = new StudentsCollection();
+
+        Student student1 = new Student("Баринов Виктор", "Кухня", 4);
+        student1.getMarks().put("Математика", 2);
+        student1.getMarks().put("Русский язык", 3);
+        student1.getMarks().put("Кулинарное искусство", 5);
+
+        Student student2 = new Student("Лавров Максим", "Кухня", 1);
+        student2.getMarks().put("Математика", 2);
+        student2.getMarks().put("Русский язык", 2);
+        student2.getMarks().put("Кулинарное искусство", 4);
+
+        Student student3 = new Student("Чуганин Арсений", "Кухня", 3);
+        student3.getMarks().put("Математика", 4);
+        student3.getMarks().put("Русский язык", 3);
+        student3.getMarks().put("Кулинарное искусство", 3);
+
+        Student student4 = new Student("Гончарова Виктория", "Администрация", 4);
+        student4.getMarks().put("Математика", 4);
+        student4.getMarks().put("Русский язык", 5);
+        student4.getMarks().put("Кулинарное искусство", 2);
+
+        Student student5 = new Student("Нагиев Дмитрий", "Администрация", 4);
+        student5.getMarks().put("Математика", 2);
+        student5.getMarks().put("Русский язык", 2);
+        student5.getMarks().put("Кулинарное искусство", 2);
+
+        studentsCollection.addStudent(student1);
+        studentsCollection.addStudent(student2);
+        studentsCollection.addStudent(student3);
+        studentsCollection.addStudent(student4);
+        studentsCollection.addStudent(student5);
+
+        printStudents(studentsCollection.getStudents(), 4);
+        System.out.println();
+        printStudents(studentsCollection.getStudents(), 1);
+        System.out.println();
+        studentsCollection.getStudents().forEach(x -> System.out.println(x.getName()));
+        studentsCollection.updateStudents();
+        System.out.println();
+        studentsCollection.getStudents().forEach(x -> System.out.println(x.getName()));
+        System.out.println();
+        printStudents(studentsCollection.getStudents(), 5);
+        System.out.println();
+        printStudents(studentsCollection.getStudents(), 4);
+        System.out.println();
+    }
+
     public static void main(String[] args) {
-        ///Attack helicopter test
-        System.out.println();
-        System.out.println("Attack helicopter test");
-        AttackHelicopter attackHelicopter = new AttackHelicopter("green", 3);
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        attackHelicopter.setBulletsCount(1);
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        System.out.println(attackHelicopter.toShootWithAMachineGun());
-        System.out.println(attackHelicopter.getBladesCount());
-        for(int i = 0; i < 5; i++) {
-            attackHelicopter.toTakeOff();
-            attackHelicopter.toLand();
-            System.out.println(attackHelicopter.getIsBroken());
-        }
-        attackHelicopter.repair();
-        attackHelicopter.toTakeOff();
-        attackHelicopter.toLand();
-        System.out.println(attackHelicopter.getColor());
-        attackHelicopter.setColor("black");
-        System.out.println(attackHelicopter.getColor());
-
-        ///Minigun helicopter test
-        System.out.println();
-        System.out.println("Minigun helicopter test");
-        MinigunHelicopter minigunHelicopter = new MinigunHelicopter("black", 3);
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        minigunHelicopter.setBulletsCount(1);
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        System.out.println(minigunHelicopter.toShootWithAMachineGun());
-        System.out.println(minigunHelicopter.getBladesCount());
-        for(int i = 0; i < 5; i++) {
-            minigunHelicopter.toTakeOff();
-            minigunHelicopter.toLand();
-            System.out.println(minigunHelicopter.getIsBroken());
-        }
-        minigunHelicopter.repair();
-        minigunHelicopter.toTakeOff();
-        minigunHelicopter.toLand();
-        System.out.println(minigunHelicopter.getColor());
-        minigunHelicopter.setColor("red");
-        System.out.println(minigunHelicopter.getColor());
-
-        ///Rocket Launcher helicopter test
-        System.out.println();
-        System.out.println("Rocket Launcher helicopter test");
-        RocketLauncherHelicopter rocketLauncherHelicopter = new RocketLauncherHelicopter("blue", 3, 2);
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        rocketLauncherHelicopter.setBulletsCount(1);
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
-        System.out.println(rocketLauncherHelicopter.getBladesCount());
-
-        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        rocketLauncherHelicopter.setRocketsCount(1);
-        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        for(int i = 0; i < 5; i++) {
-            rocketLauncherHelicopter.toTakeOff();
-            rocketLauncherHelicopter.toLand();
-            System.out.println(rocketLauncherHelicopter.getIsBroken());
-        }
-        rocketLauncherHelicopter.repair();
-        rocketLauncherHelicopter.toTakeOff();
-        rocketLauncherHelicopter.toLand();
-        System.out.println(rocketLauncherHelicopter.getColor());
-        rocketLauncherHelicopter.setColor("brown");
-        System.out.println(rocketLauncherHelicopter.getColor());
-
-        ///Cargo helicopter test
-        System.out.println();
-        System.out.println("Cargo helicopter test");
-        CargoHelicopter cargoHelicopter = new CargoHelicopter("green", 100);
-        System.out.println(cargoHelicopter.toLoad(new Cargo(15, "cargo1")));
-        System.out.println(cargoHelicopter.toLoad(new Cargo(30, "cargo2")));
-        System.out.println(cargoHelicopter.toLoad(new Cargo(45, "cargo3")));
-        System.out.println(cargoHelicopter.toLoad(new Cargo(20, "cargo4")));
-        System.out.println(cargoHelicopter.toUnload());
-        System.out.println(cargoHelicopter.toLoad(new Cargo(20, "cargo4")));
-        cargoHelicopter.showCargoList();
-        System.out.println(cargoHelicopter.getCurrentCapacity());
-        System.out.println(cargoHelicopter.toUnload());
-        System.out.println(cargoHelicopter.toUnload());
-        System.out.println(cargoHelicopter.toUnload());
-        System.out.println(cargoHelicopter.toUnload());
-        System.out.println(cargoHelicopter.getBladesCount());
-        System.out.println(cargoHelicopter.getMaxCapacity());
-        System.out.println(cargoHelicopter.getCurrentCapacity());
-
-        ///Helicopters count test
-        System.out.println();
-        System.out.println("Helicopters test");
-        System.out.println(AbstractHelicopter.createdCoptersCount);
+        checkLection4();
     }
 }
