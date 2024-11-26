@@ -3,14 +3,20 @@ import lection1.helicopters.AttackHelicopter;
 import lection1.helicopters.CargoHelicopter;
 import lection1.helicopters.MinigunHelicopter;
 import lection1.helicopters.RocketLauncherHelicopter;
-import lection1.helicopters.supportive.Cargo;
+import lection1.helicopters.supportive.*;
+import lection1.interfaces.functional.CheckMod;
+import lection1.interfaces.functional.Discriminant;
+
+import java.math.BigInteger;
 
 public class Main {
     public static void main(String[] args) {
-        ///Attack helicopter test
+        //Attack helicopter test
         System.out.println();
         System.out.println("Attack helicopter test");
         AttackHelicopter attackHelicopter = new AttackHelicopter("green", 3);
+        attackHelicopter.setThePilot(new TestPilot());
+        attackHelicopter.getThePilot().SayHello();
         System.out.println(attackHelicopter.toShootWithAMachineGun());
         System.out.println(attackHelicopter.toShootWithAMachineGun());
         System.out.println(attackHelicopter.toShootWithAMachineGun());
@@ -31,7 +37,7 @@ public class Main {
         attackHelicopter.setColor("black");
         System.out.println(attackHelicopter.getColor());
 
-        ///Minigun helicopter test
+        //Minigun helicopter test
         System.out.println();
         System.out.println("Minigun helicopter test");
         MinigunHelicopter minigunHelicopter = new MinigunHelicopter("black", 3);
@@ -55,10 +61,12 @@ public class Main {
         minigunHelicopter.setColor("red");
         System.out.println(minigunHelicopter.getColor());
 
-        ///Rocket Launcher helicopter test
+        //Rocket Launcher helicopter test
         System.out.println();
         System.out.println("Rocket Launcher helicopter test");
-        RocketLauncherHelicopter rocketLauncherHelicopter = new RocketLauncherHelicopter("blue", 3, 2);
+        RocketLauncherHelicopter<Rocket> rocketLauncherHelicopter = new RocketLauncherHelicopter<>("blue", 3);
+        rocketLauncherHelicopter.setThePilot(new TestPilot());
+        rocketLauncherHelicopter.getThePilot().SayHello();
         System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
         System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
         System.out.println(rocketLauncherHelicopter.toShootWithAMachineGun());
@@ -69,10 +77,14 @@ public class Main {
         System.out.println(rocketLauncherHelicopter.getBladesCount());
 
         System.out.println(rocketLauncherHelicopter.toLaunchRocket());
+        rocketLauncherHelicopter.addRocket(new AirToGroundRocket());
+        rocketLauncherHelicopter.addRocket(new GroundToAirRocket());
+        rocketLauncherHelicopter.addRocket(new AirToGroundRocket());
         System.out.println(rocketLauncherHelicopter.toLaunchRocket());
         System.out.println(rocketLauncherHelicopter.toLaunchRocket());
-        rocketLauncherHelicopter.setRocketsCount(1);
         System.out.println(rocketLauncherHelicopter.toLaunchRocket());
+        System.out.println(rocketLauncherHelicopter.toLaunchRocket());
+        rocketLauncherHelicopter.addRocket(new GroundToAirRocket());
         System.out.println(rocketLauncherHelicopter.toLaunchRocket());
         for(int i = 0; i < 5; i++) {
             rocketLauncherHelicopter.toTakeOff();
@@ -86,10 +98,17 @@ public class Main {
         rocketLauncherHelicopter.setColor("brown");
         System.out.println(rocketLauncherHelicopter.getColor());
 
-        ///Cargo helicopter test
+        //Cargo helicopter test
         System.out.println();
         System.out.println("Cargo helicopter test");
-        CargoHelicopter cargoHelicopter = new CargoHelicopter("green", 100);
+        CargoHelicopter<Pilot> cargoHelicopter = new CargoHelicopter<>("green", 100);
+        cargoHelicopter.setThePilot(new Pilot());
+        cargoHelicopter.getThePilot().SayHello();
+        cargoHelicopter.setThePilot(new TestPilot());
+        cargoHelicopter.getThePilot().SayHello();
+        CargoHelicopter<TestPilot> testCargoHelicopter = new CargoHelicopter<>("green", 100);
+        testCargoHelicopter.setThePilot(new TestPilot());
+        testCargoHelicopter.getThePilot().SayHello();
         System.out.println(cargoHelicopter.toLoad(new Cargo(15, "cargo1")));
         System.out.println(cargoHelicopter.toLoad(new Cargo(30, "cargo2")));
         System.out.println(cargoHelicopter.toLoad(new Cargo(45, "cargo3")));
@@ -106,9 +125,22 @@ public class Main {
         System.out.println(cargoHelicopter.getMaxCapacity());
         System.out.println(cargoHelicopter.getCurrentCapacity());
 
-        ///Helicopters count test
+        //Helicopters count test
         System.out.println();
         System.out.println("Helicopters test");
         System.out.println(AbstractHelicopter.createdCoptersCount);
+
+        //functional interfaces
+        CheckMod<Integer> isMultipleOf131 = x -> x % 13 == 0;
+        System.out.println(isMultipleOf131.checkMod(4));
+        System.out.println(isMultipleOf131.checkMod(26));
+        System.out.println(isMultipleOf131.checkMod(-39));
+        CheckMod<Double> isMultipleOf132 = x -> x % 13 == 0;
+        System.out.println(isMultipleOf132.checkMod(4.2));
+        System.out.println(isMultipleOf132.checkMod(13.0));
+
+        Discriminant<Double> findD = (a, b, c) -> b * b - 4 * a * c;
+        System.out.println(findD.discriminant(3.0, -4.0, -20.0));
+        System.out.println(findD.discriminant(7.7, 4.0, 121.2));
     }
 }
