@@ -12,7 +12,7 @@ public class SelenideExample {
 
     @BeforeClass
     void init(){
-        Configuration.baseUrl = "https://www.simbirsoft.com/";
+        Configuration.baseUrl = "https://www.simbirsoft.com";
         Configuration.timeout = 100;
     }
 
@@ -23,7 +23,7 @@ public class SelenideExample {
                 .shouldBe(visible)
                 .shouldHave(text("Написать нам"))
                 .click();
-        $x("//*[@class='fmo-parent']//*[@class='fb-modal-default]");
+        $x("//*[@class='fmo-parent']//*[@class='fb-modal-default]").shouldBe(visible);
         sleep(5000);
     }
 
